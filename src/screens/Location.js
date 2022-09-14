@@ -23,7 +23,7 @@ const Location = () => {
     const [searchQuery, setSearchQuery] = useState('');
   const onChangeSearch = query => setSearchQuery(query);
   //Geolocation.getCurrentPosition(info => console.log(info));
-  const GOOGLE_PLACES_API_KEY = 'AIzaSyBDgI2ad4YdCGS0fXaTJDI2_VxHz_4hVsw';
+ 
   return (
     <View style={styles.container}>
      <View style={styles.uppertxtContainer}>
