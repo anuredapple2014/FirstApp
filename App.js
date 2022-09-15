@@ -5,12 +5,12 @@ import React from 'react'
 //import DeliveryDetails from './src/screens/DeliveryDetails'
 //import DatePicker from './src/screens/DatePicker'
 //import PhoneInputName from './src/screens/PhoneInput'
-import FlatListApiUses from './src/screens/FlatListApiUses'
+//import FlatListApiUses from './src/screens/FlatListApiUses'
+import HomeScreen from './src/screens/HomeScreen'
 //import Location from './src/screens/Location'
-
 const App = () => {
   return (
-    <FlatListApiUses />
+    <HomeScreen />
   )
 }
 

@@ -31,6 +31,25 @@ const FlatListApiUses = () => {
           });
       }
 
+      const addDataUsingSimpleGetCall = () =>{
+        fetch('https://fakestoreapi.com/products',{
+            method:"POST",
+            body:JSON.stringify(
+                {
+                    title: 'test product',
+                    price: 13.5,
+                    description: 'lorem ipsum set',
+                    image: 'https://i.pravatar.cc',
+                    category: 'electronic'
+                }
+            )
+        })
+            .then(res=>res.json())
+            .then(json=>
+             
+              console.log(json))
+      }
+
       const getDataForDelete = (id) => {
         axios
           .delete('https://jsonplaceholder.typicode.com/todos/${id}')
@@ -62,7 +81,7 @@ const FlatListApiUses = () => {
         <Text style={styles.t1}>{item.category}</Text>
         <Text numberOfLines={1}>{item.description}</Text>
         <Text style={{marginTop:hp('3%'),marginTop:hp('3%'),fontWeight:'bold'}}>{item.rating.count}$</Text>
-        <TouchableOpacity style={styles.btn2}  onPress={getDataForDelete}>
+        <TouchableOpacity style={styles.btn2} onPress={addDataUsingSimpleGetCall} >
           <Text>Delete Post</Text>
         </TouchableOpacity>
         </View>
