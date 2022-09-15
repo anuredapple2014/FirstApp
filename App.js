@@ -7,10 +7,12 @@ import React from 'react'
 //import PhoneInputName from './src/screens/PhoneInput'
 //import FlatListApiUses from './src/screens/FlatListApiUses'
 import HomeScreen from './src/screens/HomeScreen'
+import MobileNumber from './src/screens/MobileNumber'
+
 //import Location from './src/screens/Location'
 const App = () => {
   return (
-    <HomeScreen />
+    <MobileNumber />
   )
 }
 
