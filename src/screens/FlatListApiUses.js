@@ -81,7 +81,7 @@ const FlatListApiUses = () => {
         <Text style={styles.t1}>{item.category}</Text>
         <Text numberOfLines={1}>{item.description}</Text>
         <Text style={{marginTop:hp('3%'),marginTop:hp('3%'),fontWeight:'bold'}}>{item.rating.count}$</Text>
-        <TouchableOpacity style={styles.btn2} onPress={addDataUsingSimpleGetCall} >
+        <TouchableOpacity style={styles.btn2}  >
           <Text>Delete Post</Text>
         </TouchableOpacity>
         </View>

@@ -21,7 +21,7 @@ const MobileNumber = () => {
             <Text style={{fontSize:hp('2%'),fontWeight:'bold',color:'#000000'}}>Enter your Mobile number</Text>
             </View>
             <View style={styles.CountrycodeContainer}> 
-            <View style={{width:wp('96%'),height:hp('7%'),flexDirection:'row'}}>
+            <View style={{width:wp('96%'),height:hp('7%'),flexDirection:'row',}}>
             <PhoneInput
         ref={phoneInput}
         defaultValue={phoneNumber}
@@ -30,7 +30,7 @@ const MobileNumber = () => {
         withShadow
         autoFocus
         containerStyle={StyleSheet.phoneNumberView}
-        textContainerStyle={{ paddingVertical: 0 }}
+        textContainerStyle={{ paddingVertical: 0,backgroundColor:'#ffffff', }}
         onChangeFormattedText={text => {
           setPhoneNumber(text);
         }}

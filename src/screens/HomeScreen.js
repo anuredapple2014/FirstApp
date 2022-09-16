@@ -1,24 +1,32 @@
-import {StyleSheet, Text, View,Image,TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View,Image,TouchableOpacity,Pressable} from 'react-native';
 import React, {useState, useRef} from 'react';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
-
+import Modal from "react-native-modal";
 import {Picker} from '@react-native-picker/picker';
 import MealsHub from '../component/MealsHub';
 const HomeScreen = () => {
+    const [isModalVisible, setModalVisible] = useState(false);
+  const [date, setDate] = useState(new Date())
+  const [open, setOpen] = useState(false)
+    const [choosenLabel, setChoosenLabel] = useState('Native');
+  const [choosenIndex, setChoosenIndex] = useState('2');
   const [selectedLanguage, setSelectedLanguage] = useState();
   const pickerRef = useRef();
-
-  const open = () => {
-    pickerRef.current.focus();
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
   };
 
-  const close = () => {
-    pickerRef.current.blur();
-  };
+//   const open = () => {
+//     pickerRef.current.focus();
+//   };
+
+//   const close = () => {
+//     pickerRef.current.blur();
+//   };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -53,8 +61,21 @@ const HomeScreen = () => {
             backgroundColor: '#ffffff',
             borderRadius: hp('1%'),
           }}>
-          <Picker
-            style={{ borderRadius: hp('1%')}}
+              <Picker
+          selectedValue={choosenLabel}
+          onValueChange={(itemValue, itemIndex) => {
+            setChoosenLabel(itemValue);
+            setChoosenIndex(itemIndex);
+          }}>
+          <Picker.Item label="Hello" value="Hello" />
+          <Picker.Item label="React" value="React" />
+          <Picker.Item label="Native" value="Native" />
+          <Picker.Item label="How" value="How" />
+          <Picker.Item label="are" value="are" />
+          <Picker.Item label="you" value="you" />
+        </Picker>
+          {/* <Picker
+            style={{ borderRadius: hp('1%'),flex:1}}
             itemStyle={{fontSize: hp('1.3%'), color: '#000000'}}
             ref={pickerRef}
             selectedValue={selectedLanguage}
@@ -63,16 +84,17 @@ const HomeScreen = () => {
             }>
             <Picker.Item label="Java" value="java" />
             <Picker.Item label="JavaScript" value="js" />
-          </Picker>
+          </Picker> */}
+
         </View>
         <View style={styles.headerinnerParttwo}>
           <Text style={{fontSize: hp('1.3%'), color: '#000000'}}>Top Eats</Text>
         </View>
-        <View style={styles.headerinnerParttwo}>
+        <TouchableOpacity style={styles.headerinnerParttwo} onPress={toggleModal}>
           <Text style={{fontSize: hp('1.3%'), color: '#000000'}}>
             Price Ranging
           </Text>
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.mealsContainer}>
          <MealsHub/>
@@ -123,6 +145,33 @@ const HomeScreen = () => {
                </TouchableOpacity>
                </View>
       </View>
+
+     <Modal isVisible={isModalVisible} animationType="fade" style={{justifyContent:"flex-end",}}>
+
+        <View style={{ width:wp('100%'),height:hp('60%'),backgroundColor:'#ffffff',alignItems:'center',justifyContent:'center',alignSelf:"center",borderTopLeftRadius:hp('2%'),borderTopRightRadius:hp('2%'), }}>
+        <Image source={require('../assets/Images/foodimageone.png')}
+                style={{ width: wp('96%'), height: hp('20%'),alignSelf:'center',borderRadius:hp('2%') }} resizeMode='cover' />
+       <Text style={{color:'#05B011',fontSize:hp('1.5%'),fontWeight:'700',marginTop:hp('1%')}}>Your first 2 orders</Text> 
+       <Text style={{color:'#000000',fontSize:hp('2.5%'),fontWeight:'700',marginTop:hp('1%')}}>Enjoy 25% off (up to us $7)</Text> 
+       <Text style={{color:'#000000',fontSize:hp('1.3%'),fontWeight:'400',marginTop:hp('1%')}}>welcome to foodly Eats Here's a little</Text> 
+       <Text style={{color:'#000000',fontSize:hp('1.3%'),fontWeight:'400',marginTop:hp('1%')}}>somethings for your first order</Text> 
+       <Pressable style={{width:wp('56%'),height:hp('6%'),backgroundColor:'#FF0A38',flexDirection:'row',borderRadius:hp('1%'),marginTop:hp('2%')}} >
+            <View style={{width:wp('10%'),backgroundColor:"#FF0A38",height:hp('6%'),borderTopLeftRadius:hp('1%'),borderBottomLeftRadius:hp('1%')}}/>
+
+            
+            <View style={{width:wp('36%'),height:hp('6%'),alignItems:'center',justifyContent:'center',backgroundColor:'#FF0A38'}}>
+           <Text style={{fontWeight:'700',fontSize:hp('2%'),color:'#ffffff'}}>Happy Foodly</Text>
+           </View>
+           <View style={{width:wp('20%'),backgroundColor:"#FF0A38",height:hp('6%'),alignItems:'center',justifyContent:'center',borderTopRightRadius:hp('1%'),borderBottomRightRadius:hp('1%')}}>
+           <FontAwesome5Icon style={{fontSize: hp('2.5%')}} name='check' color='#ffffff' size={hp('2%')} />
+           </View>
+        </Pressable>
+         <TouchableOpacity  onPress={toggleModal}>
+        <Text  style={{fontWeight:'bold',fontSize:hp('1.3%'),color:'#000000',textDecorationLine:'underline',marginTop:hp('2%')}}>Skip for now</Text>
+        </TouchableOpacity>
+        </View>
+      </Modal>
+
     </View>
   );
 };

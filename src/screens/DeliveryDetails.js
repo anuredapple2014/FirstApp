@@ -142,6 +142,7 @@ const DeliveryDetails = () => {
         </TouchableOpacity>
       </View>
       <DatePicker
+       
         title='Scheduled Delivery Time'
         modal
         open={open}
