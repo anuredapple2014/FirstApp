@@ -26,8 +26,8 @@ const DropDown = ({
          onPress={()=>setShowOption(!showOption)}>
             <Text>{!! value? value?.name : 'Choose as Option'}</Text>
             <FontAwesome5
-            style={{fontSize: hp('1.8%'), color: '#808080'}}
-            name="location-arrow"
+            style={{fontSize: hp('1.8%'), color: '#808080',transform:[{rotate: showOption ? '180deg' : '0deg'}]}}
+            name="caret-down"
             color="#ffffff"
             size={hp('2%')}
           />
@@ -39,8 +39,9 @@ const DropDown = ({
             key={String(i)} 
             onPress={()=>onSelectedItem(val)}
             style={{backgroundColor: value.id == val.id ? 'orange' : 'white',
-                     width:wp('70%'),height:hp('4%'),alignSelf:'center'}}>
-            <Text  style={{alignSelf:'flex-start'}}> {val.name}</Text>
+            width:wp('70%'),height:hp('4%'),alignSelf:'center'}}
+           >
+            <Text  style={{alignSelf:'flex-start',marginLeft:wp('1%')}}> {val.name}</Text>
             </TouchableOpacity>
         )
       })}
